@@ -1,7 +1,6 @@
 export const Location = () => {
   // Зайди в Яндекс Карты -> Поделиться -> Забрать код (iframe)
   // Замени src ниже на свою ссылку из конструктора карт
-  const mapSrc = "https://yandex.ru";
 
   return (
     <section className="py-20">

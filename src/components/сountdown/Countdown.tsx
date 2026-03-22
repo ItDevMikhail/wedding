@@ -1,12 +1,15 @@
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
 
-export const Countdown = ({ targetDate }) => {
+type CountdownProps = {
+  targetDate: string | number | Date;
+};
+
+export const Countdown = ({ targetDate }: CountdownProps) => {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
   useEffect(() => {
     const timer = setInterval(() => {
-      const difference = new Date(targetDate) - new Date();
+      const difference = new Date(targetDate).getTime() - Date.now();
       if (difference <= 0) {
         clearInterval(timer);
       } else {
