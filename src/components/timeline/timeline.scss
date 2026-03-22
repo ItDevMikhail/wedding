@@ -1,0 +1,45 @@
+.timeline {
+  padding: 40px 20px;
+  text-align: center;
+
+  &-container {
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto;
+    padding-left: 30px; // Место под линию
+    border-left: 2px solid #d1bfa7; // Тонкая бежевая линия
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 30px;
+      text-align: left;
+
+      &::before {
+        // Кружочек на линии
+        content: "";
+        position: absolute;
+        left: -37px;
+        top: 5px;
+        width: 12px;
+        height: 12px;
+        background: #d1bfa7;
+        border-radius: 50%;
+      }
+
+      .time {
+        font-weight: bold;
+        color: #8a7a66;
+        font-size: 1.1rem;
+      }
+
+      h3 {
+        margin: 5px 0;
+        font-family: "Playfair Display", serif;
+      }
+      p {
+        color: #666;
+        font-size: 0.9rem;
+      }
+    }
+  }
+}
