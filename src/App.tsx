@@ -1,4 +1,3 @@
-import { motion, AnimatePresence } from "framer-motion";
 import {
   Timeline,
   DressCode,
@@ -14,14 +13,8 @@ import "@/styles/main.scss";
 
 function App() {
   return (
-    <AnimatePresence>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.5, ease: "easeInOut" }}
-        className="relative min-h-screen"
-      >
-        <div className="app-wrapper">
+    <div className="relative min-h-screen app-shell">
+      <div className="app-wrapper">
           <BackgroundBlobs />
           <FlowerFall />
           <Hero />
@@ -46,9 +39,8 @@ function App() {
           >
             <p>© 2026 • Го тусить</p>
           </footer>
-        </div>
-      </motion.div>
-    </AnimatePresence>
+      </div>
+    </div>
   );
 }
 

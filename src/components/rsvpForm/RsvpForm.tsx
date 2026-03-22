@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -56,7 +55,7 @@ export const RsvpForm = () => {
     setStatus("submitting");
 
     try {
-      const url = import.meta.env.VITE_APPS_URL;
+      const url = import.meta.env.VITE_APPS_URL || "https://script.google.com/macros/s/AKfycbz30yaTTEjeyUsQoCoUyPwqGrdMqxn7VQ4oJWGfSRCSAPzzZJgj5COz9aQrOIhi_iiD/exec";
 
       await fetch(
         url,
@@ -100,11 +99,7 @@ export const RsvpForm = () => {
         </CardHeader>
         <CardContent>
           {status === "success" ? (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="text-center py-10"
-            >
+            <div className="text-center py-10 rsvp-success-banner">
               <h3 className="text-2xl font-serif text-[#d1bfa7]">
                 Благодарим за ответ!
               </h3>
@@ -118,7 +113,7 @@ export const RsvpForm = () => {
               >
                 Отправить еще раз
               </Button>
-            </motion.div>
+            </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="space-y-2">
@@ -162,13 +157,8 @@ export const RsvpForm = () => {
                 </Select>
               </div>
 
-              <AnimatePresence>
-                {formData.attending === "yes" && (
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    className="space-y-6"
-                  >
+              {formData.attending === "yes" && (
+                  <div className="space-y-6">
                     {/* Блок ЕДА */}
                     <div className="space-y-3">
                       <Label className="text-gray-400 uppercase text-[10px] tracking-[0.2em]">
@@ -226,9 +216,8 @@ export const RsvpForm = () => {
                         ))}
                       </div>
                     </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+                  </div>
+              )}
 
               <Button
                 className="w-full bg-[#d1bfa7] hover:bg-[#c4af94] text-white py-6 text-lg transition-all duration-300"

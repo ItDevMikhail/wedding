@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { motion, useScroll, useSpring } from "framer-motion";
+import { motion, useScroll } from "framer-motion";
 
 const events = [
   { time: "15:00", title: "Сбор гостей", desc: "Welcome-зона и легкий фуршет" },
@@ -15,8 +15,7 @@ export const Timeline = () => {
     offset: ["start center", "end center"],
   });
 
-  const scaleY = useSpring(scrollYProgress, { stiffness: 100, damping: 30 });
-
+  // Прямая привязка к скроллу: useSpring держит RAF и «догоняет» прогресс — лишняя нагрузка на CPU.
   return (
     <section
       ref={containerRef}
@@ -30,8 +29,8 @@ export const Timeline = () => {
         {/* Линия строго по центру (на десктопе) */}
         <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-[1px] bg-gray-200 -translate-x-1/2" />
         <motion.div
-          style={{ scaleY, originY: 0 }}
-          className="absolute left-4 md:left-1/2 top-0 bottom-0 w-[2px] bg-[#d1bfa7] z-10 -translate-x-1/2"
+          style={{ scaleY: scrollYProgress, originY: 0 }}
+          className="absolute left-4 md:left-1/2 top-0 bottom-0 w-[2px] bg-[#d1bfa7] z-10 -translate-x-1/2 will-change-transform [transform:translateZ(0)]"
         />
 
         <div className="space-y-20">
@@ -60,10 +59,10 @@ export const Timeline = () => {
                   <span className="text-[#d1bfa7] font-semibold text-xs tracking-widest uppercase block mb-2">
                     {event.time}
                   </span>
-                  <h3 className="text-2xl font-serif text-gray-800 leading-tight">
+                  <h3 className="text-2xl font-serif text-gray-800 leading-tight font-medium">
                     {event.title}
                   </h3>
-                  <p className="text-gray-500 text-sm mt-3 leading-relaxed max-w-sm inline-block">
+                  <p className="text-gray-500 text-sm mt-3 leading-relaxed max-w-sm inline-block font-medium">
                     {event.desc}
                   </p>
                 </div>

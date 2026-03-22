@@ -1,18 +1,11 @@
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef } from 'react';
+import { type ReactNode } from "react";
 
-export const ParallaxSection = ({ children, offset = 50 }: any) => {
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"]
-  });
+type ParallaxSectionProps = {
+  children: ReactNode;
+  /** Оставлено для совместимости; параллакс отключён (без framer-motion) */
+  offset?: number;
+};
 
-  const y = useTransform(scrollYProgress, [0, 1], [-offset, offset]);
-
-  return (
-    <motion.div ref={ref} style={{ y }}>
-      {children}
-    </motion.div>
-  );
+export const ParallaxSection = ({ children }: ParallaxSectionProps) => {
+  return <div>{children}</div>;
 };

@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
+import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
 
 export const FlowerFall = () => {
+  const reduceMotion = usePrefersReducedMotion();
   const [init, setInit] = useState(false);
 
   useEffect(() => {
@@ -11,7 +13,7 @@ export const FlowerFall = () => {
     }).then(() => setInit(true));
   }, []);
 
-  if (!init) return null;
+  if (reduceMotion || !init) return null;
 
   return (
     <Particles
@@ -87,14 +89,12 @@ export const FlowerFall = () => {
         },
         responsive: [
           {
-            maxWidth: 768, // Настройки для экранов меньше 768px
+            maxWidth: 768,
             options: {
               particles: {
-                number: {
-                  value: 80, // Увеличиваем количество для густоты на мобилке
-                },
-                size: { value: { min: 4, max: 10 } }, // Чуть меньше размер
-                move: { speed: 1.5 }, // Чуть быстрее на мобилке
+                number: { value: 24 },
+                size: { value: { min: 4, max: 10 } },
+                move: { speed: 1 },
               },
             },
           },
