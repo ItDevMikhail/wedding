@@ -1,7 +1,4 @@
 export const Location = () => {
-  // Зайди в Яндекс Карты -> Поделиться -> Забрать код (iframe)
-  // Замени src ниже на свою ссылку из конструктора карт
-
   return (
     <section className="py-20">
       <h2 className="font-serif text-3xl text-center mb-10">

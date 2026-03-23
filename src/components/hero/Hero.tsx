@@ -1,5 +1,5 @@
 export const Hero = () => {
-  const heroBg = `${import.meta.env.BASE_URL}images/heroImg.JPG`;
+  const heroBg = `${import.meta.env.BASE_URL}images/heroImg.webp`;
 
   return (
     <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
@@ -18,9 +18,15 @@ export const Hero = () => {
           className="h-px w-14 bg-gradient-to-r from-transparent via-white/75 to-transparent md:w-20"
           aria-hidden
         />
-        <p className="font-serif text-xl font-light italic leading-snug text-white/95 sm:text-2xl md:max-w-xl md:text-[1.65rem] md:leading-relaxed text-center [text-shadow:0_1px_2px_rgba(0,0,0,0.45),0_6px_28px_rgba(0,0,0,0.35)]">
-          Приглашаем вас разделить с нами этот особенный день
-        </p>
+        <div className="relative">
+          <span
+            className="absolute -inset-2 rounded-2xl bg-white/5 backdrop-blur-xs"
+            aria-hidden
+          />
+          <p className="relative z-10 px-4 py-3 font-serif text-2xl font-light italic leading-snug text-white/95 sm:text-3xl md:max-w-xl md:text-[2rem] md:leading-relaxed text-center [text-shadow:0_1px_2px_rgba(0,0,0,0.45),0_6px_28px_rgba(0,0,0,0.35)]">
+            Приглашаем вас разделить с нами этот особенный день
+          </p>
+        </div>
         <span
           className="h-px w-14 bg-gradient-to-r from-transparent via-white/75 to-transparent md:w-20"
           aria-hidden

@@ -4,8 +4,12 @@ import { motion, useScroll } from "framer-motion";
 const events = [
   { time: "15:00", title: "Сбор гостей", desc: "Welcome-зона и легкий фуршет" },
   { time: "16:00", title: "Церемония", desc: "Самый важный момент дня" },
-  { time: "17:30", title: "Банкет", desc: "Ужин, танцы и поздравления" },
-  { time: "22:00", title: "Торт и финал", desc: "Красивое завершение вечера" },
+  { time: "17:30", title: "Банкет", desc: "Ужин, танцы, развлечения" },
+  {
+    time: "22:00-23:00",
+    title: "Торт и финал основной программы",
+    desc: "Красивое завершение основной программы",
+  },
 ];
 
 export const Timeline = () => {
@@ -48,7 +52,7 @@ export const Timeline = () => {
               {/* Карточка контента */}
               <motion.div
                 className={`w-full pl-12 md:pl-0 md:w-1/2 ${i % 2 === 0 ? "md:pr-16" : "md:pl-16"}`}
-                initial={{ opacity: 0, x: i % 2 === 0 ? -40 : 40 }}
+                initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
                 viewport={{ once: true, margin: "-100px" }}

@@ -8,6 +8,7 @@ import {
   ParallaxSection,
   BackgroundBlobs,
   FlowerFall,
+  Transfer,
 } from "@/components";
 import "@/styles/main.scss";
 
@@ -32,12 +33,15 @@ function App() {
               <DressCode />
             </ParallaxSection>
             <Location />
+            <Transfer/>
             <RsvpForm />
           </main>
           <footer
-            style={{ padding: "40px", textAlign: "center", opacity: 0.5 }}
+            style={{ textAlign: "center", opacity: 0.5 }}
           >
+            <section className="bg-white">
             <p>© 2026 • Го тусить</p>
+            </section>
           </footer>
       </div>
     </div>

@@ -7,3 +7,4 @@ export * from "./location/Location";
 export * from "./backgroundBlobs/BackgroundBlobs";
 export * from "./parallaxSection/ParallaxSection";
 export * from "./flowerFall/FlowerFall";
+export * from "./transfer/Transfer";
